@@ -28,11 +28,29 @@
 				
 			})
 			
-				
+			kc.saveKeep = function (keep) {
+				kc.currrentKeep = keep;
+				kc.showMemberVaults = true;
+			}
 			
+			kc.selectVault = function (id, vault){
+				console.log(vault, id);
+				vault.keeps = vault.keeps || {}
+				kc.member.vaults[id].keeps = kc.member.vaults[id].keeps || {}
+				kc.member.$save();
+				kc.currrentKeep.keepCount++;
+				kc.keeps.$save(kc.currrentKeep);
+			
+			}	
+			
+			
+			function showMemberVaults(){
+				kc.showMemberVaults = true;
+				showMemberVaults(keep);
+			}
 			
 
-			console.log(kc.member); //'if you have a member filter the keeps to show only your own')
+			//'if you have a member filter the keeps to show only your own')
 			//Tie Keeps to firebase
 /*			kc.keeps = [{
 				title: 'Learn to Draw',

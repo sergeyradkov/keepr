@@ -2,7 +2,8 @@
 	angular.module('keepr')
 		.component('keepComponent', {
 			bindings:{
-				keep: '<'
+				keep: '<',
+				onKeepClick: '<'
 			},
 			templateUrl: 'app/components/keeps/keep.html',
 			controller: KeepController

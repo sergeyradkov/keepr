@@ -12,8 +12,17 @@
 	<div class="gallery">
 		<div class="media-bank">
 			<div class="media-content" ng-repeat="keep in $ctrl.keeps | filter: $ctrl.query">
-				<keep-component keep="keep"></keep-component>
+				<keep-component keep="keep" on-keep-click = "$ctrl.saveKeep"></keep-component>
 			</div>
 		</div>
 	</div>
+</div>
+
+<div ng-show="$ctrl.showMemberVaults">
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="vault in $ctrl.member.vaults">
+			<a ng-click="">{{vault.title}}</a>
+		</li>
+		
+	</ul>
 </div>

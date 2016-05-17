@@ -8,11 +8,35 @@
 	<div class="my-keeps panel panel-default">
 		<div class="well">
 			<div class="my-keeps-header">
-				<span>My Keeps</span> <button class="btn btn-theme fa-lg theme-font" ng-click="$ctrl.show = !$ctrl.show">K</button>
+				<span>My Keeps</span> 
+				<button class="btn btn-theme fa-lg theme-font" ng-click="$ctrl.toggleView('k')">K</button>
+				<button class="btn btn-theme fa-lg theme-font" ng-click="$ctrl.toogleView('v')">V</button>
 			</div>
 		</div>
 		<div class="panel-body">
-			<div class="row" ng-show="$ctrl.show">
+			<div class="row" nh-show="$ctrl.show == 'v'">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="panel">
+						<form class="form" ng-submit="addVault($ctrl.newVault)">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Title" ng-model="$ctrl.newVault.title">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Description" ng-model="$ctrl.newKeep.description">
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<button class="btn btn-theme btn-block" type="submit">Keep</button>
+								</div>
+								<div class="col-sm-6">
+									<button class="btn btn-info btn-block" type="reset">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="$ctrl.show == 'k'">
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="panel">
 						<form class="form" ng-submit="addKeep($ctrl.newKeep)">
@@ -44,7 +68,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" ng-show="!$ctrl.show">
+			<div class="row" ng-show="$ctrl.show = 'keeps'">
 				<keeps-component show-member-keeps="true"></keeps-component>
 			</div>
 		</div>

@@ -27,7 +27,19 @@
 			newKeep.shareCount = 0;
 			newKeep.viewCount = 0;
 			mc.keeps.$add(newKeep);
-			mc.newKeep = {};
+			mc.newKeep = null;
+		}
+		mc.addVault = function(vault){
+			
+			var vaults = $firebaseArray(new Firebase(FBREF + 'users/' + mc.member.id+ '/vaults'));
+			vaults.$add(vault);
+		}
+		mc.toogleView = function(viewName){
+			if(mc.show == viewName){
+				mc.show = 'keeps'
+			} else {
+				mc.show = viewName;
+			}
 		}
 		
 		
