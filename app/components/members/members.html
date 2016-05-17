@@ -15,7 +15,7 @@
 			<div class="row" ng-show="$ctrl.show">
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="panel">
-						<form class="form">
+						<form class="form" ng-submit="addKeep($ctrl.newKeep)">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="Title" ng-model="$ctrl.newKeep.title">
 							</div>
@@ -30,7 +30,7 @@
 							</div>
 							<div class="form-group">
 								<label for="public">Mark as Public?</label>
-								<input type="checkbox" class="form-control" ng-model="$ctrl.newKeep.public">
+								<input type="checkbox" class="form-control" ng-model="$ctrl.newKeep.public" ng-true-value="true" ng-false-value="false">
 							</div>
 							<div class="row">
 								<div class="col-sm-6">
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 			<div class="row" ng-show="!$ctrl.show">
-				<keeps-component member="$ctrl.member"></keeps-component>
+				<keeps-component show-member-keeps="true"></keeps-component>
 			</div>
 		</div>
 	</div>

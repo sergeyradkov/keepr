@@ -1,4 +1,5 @@
 angular.module('keepr', [
 	'ui.router',
-	'ng-firebase-auth'
+	'ng-firebase-auth',
+	'firebase'
 ])
