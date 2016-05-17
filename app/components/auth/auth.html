@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="assets/css/auth.css">
+<header role="banner">
+	<div id="cd-logo">
+		<a ui-sref="home"><img src="assets/img/keepr-logo.jpg" class="Keepr-logo" alt="Logo"></a>
+	</div>
+
+	<nav class="main-nav" ng-click="$ctrl.show = !$ctrl.show">
+		<ul ng-class="{'is-visible': $ctrl.show}">
+			<li><a class="cd-signin" ng-click="$ctrl.activeView = 'login'" ng-if="!$ctrl.member.email">Sign in</a></li>
+			<li><a class="cd-signup" ng-click="$ctrl.activeView = 'register'" ng-if="!$ctrl.member.email">Register</a></li>
+			<li ng-if="$ctrl.member.email">
+				<a class="cd-signin" ng-click="$ctrl.logout()">Logout</a>
+			</li>
+			<li ng-if="$ctrl.member.email">
+				<a class="cd-signin" ui-sref="auth.members">Dashboard</a>
+			</li>
+			<li ng-if="$ctrl.member.email">
+				<h1 style="color: #fff;" class="">Hi, {{$ctrl.member.username.split(' ')[0]}}</h1>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<div class="cd-user-modal" ng-class="{'is-visible': $ctrl.activeView.length > 0}">
+	<div class="cd-user-modal-container">
+		<ul class="cd-switcher">
+			<li><a ng-class="{'selected': $ctrl.activeView == 'login'}" ng-click="$ctrl.activeView = 'login'">Sign in</a></li>
+			<li><a ng-class="{'selected': $ctrl.activeView == 'register'}" ng-click="$ctrl.activeView = 'register'">New account</a></li>
+		</ul>
+
+		<div id="cd-login" ng-class="{'is-selected': $ctrl.activeView == 'login'}">
+			<!-- log in form -->
+			<form class="cd-form" ng-submit="$ctrl.login()">
+				<p class="fieldset">
+					<label class="image-replace cd-email" for="login-email">E-mail</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.email" id="login-email" type="email" placeholder="E-mail">
+				</p>
+
+				<p class="fieldset">
+					<label class="image-replace cd-password" for="login-password">Password</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.password" id="login-password" type="password" placeholder="Password">
+					<a class="hide-password">show</a>
+				</p>
+
+				<p class="fieldset">
+					<input type="checkbox" id="remember-me" checked>
+					<label for="remember-me">Remember me</label>
+				</p>
+
+				<p class="fieldset">
+					<input class="full-width" type="submit" value="Login">
+					<div class="alert alert-danger" ng-if="$ctrl.error">{{$ctrl.error}}</div>
+				</p>
+			</form>
+
+			<p class="cd-form-bottom-message"><a ng-click="$ctrl.activeView = 'forgot'">Forgot your password?</a> | <a ng-click="$ctrl.activeView = ''" ng-if="!$ctrl.member.email">I'll sign up later just browsing for now.</a></p>
+			<a ng-click="$ctrl.activeView = ''; $ctrl.show = false;" class="cd-close-form">Close</a>
+		</div>
+		<!-- cd-login -->
+
+		<div id="cd-signup" ng-class="{'is-selected': $ctrl.activeView == 'register'}">
+			<!-- sign up form -->
+			<form class="cd-form" ng-submit="$ctrl.register()">
+				<p class="fieldset">
+					<label class="image-replace cd-username" for="signup-username">Username</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.username" id="signup-username" type="text" placeholder="Username">
+				</p>
+
+				<p class="fieldset">
+					<label class="image-replace cd-email" for="signup-email">E-mail</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.email" id="signup-email" type="email" placeholder="E-mail">
+				</p>
+
+				<p class="fieldset">
+					<label class="image-replace cd-password" for="signup-password">Password</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.password" id="signup-password" type="password" placeholder="Password">
+					<a class="hide-password">Hide</a>
+				</p>
+
+				<p class="fieldset">
+					<input type="checkbox" id="accept-terms">
+					<label for="accept-terms">I agree to the <a>Terms</a></label>
+				</p>
+
+				<p class="fieldset">
+					<input class="full-width has-padding" type="submit" value="Create account">
+					<div class="alert alert-danger" ng-if="$ctrl.error">{{$ctrl.error}}</div>
+				</p>
+			</form>
+				<p class="cd-form-bottom-message"><a ng-click="$ctrl.activeView = ''" ng-if="!$ctrl.member.email">I'll sign up later just browsing for now.</a></p>
+			<a class="cd-close-form" ng-click="$ctrl.activeView = ''; $ctrl.show = false;">Close</a>
+		</div>
+		<!-- cd-signup -->
+
+		<div id="cd-reset-password" ng-class="{'is-selected': $ctrl.activeView == 'forgot'}">
+			<!-- reset password form -->
+			<p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+			<form class="cd-form" ng-submit="$ctrl.forgot()">
+				<p class="fieldset">
+					<label class="image-replace cd-email" for="reset-email">E-mail</label>
+					<input class="full-width has-padding has-border" ng-model="$ctrl.auth.email" id="reset-email" type="email" placeholder="E-mail">
+				</p>
+
+				<p class="fieldset">
+					<input class="full-width has-padding" type="submit" value="Reset password">
+					<div class="alert alert-danger" ng-if="$ctrl.error">{{$ctrl.error}}</div>
+				</p>
+			</form>
+
+			<p class="cd-form-bottom-message"><a ng-click="$ctrl.activeView = 'login'">Back to sign in</a></p>
+		</div>
+		<a ng-click="$ctrl.activeView = ''" class="cd-close-form">Close</a>
+	</div>
+</div>

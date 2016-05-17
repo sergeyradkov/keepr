@@ -1,0 +1,53 @@
+<div class="container-fluid">
+	<div class="jumbotron">
+		<h1>Hello {{$ctrl.member.username}}</h1>
+		<p>Here you may post your own keeps, Be sure to tag each keep and mark it as public or private</p>
+	</div>
+
+
+	<div class="my-keeps panel panel-default">
+		<div class="well">
+			<div class="my-keeps-header">
+				<span>My Keeps</span> <button class="btn btn-theme fa-lg theme-font" ng-click="$ctrl.show = !$ctrl.show">K</button>
+			</div>
+		</div>
+		<div class="panel-body">
+			<div class="row" ng-show="$ctrl.show">
+				<div class="col-sm-8 col-sm-offset-2">
+					<div class="panel">
+						<form class="form">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Title" ng-model="$ctrl.newKeep.title">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Image Url" ng-model="$ctrl.newKeep.imgUrl">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Link to Article" ng-model="$ctrl.newKeep.link">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Tags" ng-model="$ctrl.newKeep.tags">
+							</div>
+							<div class="form-group">
+								<label for="public">Mark as Public?</label>
+								<input type="checkbox" class="form-control" ng-model="$ctrl.newKeep.public">
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<button class="btn btn-theme btn-block" type="submit">Keep</button>
+								</div>
+								<div class="col-sm-6">
+									<button class="btn btn-info btn-block" type="reset">Reset</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row" ng-show="!$ctrl.show">
+				<keeps-component member="$ctrl.member"></keeps-component>
+			</div>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="keep">
+	<img ng-src="{{$ctrl.keep.imgUrl}}" alt="Image title">
+	<div class="keep-details">
+		<hr>
+		<div class="highlights text-muted text-center">
+			<span><span class="theme-font">k:</span>{{$ctrl.keep.keepCount}}</span>
+			<span><i class="fa fa-share"></i>: {{$ctrl.keep.shareCount}}</span>
+			<span><i class="fa fa-eye"></i>: {{$ctrl.keep.viewCount}}</span>
+		</div>
+		<hr>
+		<h3>{{$ctrl.keep.title}}</h3>
+		<div class="caption">
+			<p>{{$ctrl.keep.body}}</p>
+			<hr>
+			<p class="text-center">
+				<a class="btn btn-theme" role="button">K</a>
+				<a class="btn btn-default" role="button"><i class="fa fa-share"></i></a>
+				<a class="btn btn-info" role="button"><i class="fa fa-eye"></i></a>
+			</p>
+		</div>
+	</div>
+</div>

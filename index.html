@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="keepr">
+<head>
+	<meta charset="UTF-8">
+	<title>Keepr</title>
+	<link href='//fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+	<link href="//db.onlinewebfonts.com/c/b83770b23b9a373f5cdb041c4d9c7604?family=Usuzi" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="//bootswatch.com/cosmo/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+	
+	<auth-component></auth-component>
+	<ui-view></ui-view>
+	
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/firebase/firebase.js"></script>
+	
+	
+	<script src="app/config/init.js"></script>
+	<script src="app/config/routes.js"></script>
+	<script src="app/config/constants.js"></script>
+	
+	<script src="app/components/auth/auth-component.js"></script>
+	<script src="app/components/members/members-component.js"></script>
+	<script src="app/components/keeps/keeps-component.js"></script>
+	<script src="app/components/keeps/keep-component.js"></script>
+	
+	
+</body>
+</html>
